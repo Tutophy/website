@@ -17,7 +17,8 @@
                         'dark-bg': '#0F172A',
                         'dark-card': '#1E293B',
                         'accent-teal': '#00F0FF',
-                        'accent-pink': '#FF00F5'
+                        'accent-pink': '#FF00F5',
+                        'accent-yellow': '#FBBF24'
                     },
                     animation: {
                         'float': 'float 6s ease-in-out infinite',
@@ -67,6 +68,7 @@
             --dark-card: #1E293B;
             --accent-teal: #00F0FF;
             --accent-pink: #FF00F5;
+            --accent-yellow: #FBBF24;
         }
         
         body {
@@ -239,6 +241,79 @@
         
         .service-card:hover .service-card-icon {
             transform: rotate(10deg) scale(1.1);
+        }
+        
+        /* Pricing Section */
+        .pricing-card {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+        
+        .pricing-card:hover::before {
+            opacity: 1;
+        }
+        
+        .pricing-highlight {
+            position: absolute;
+            top: 15px;
+            right: -30px;
+            background-color: var(--accent-yellow);
+            color: #78350f;
+            padding: 5px 30px;
+            transform: rotate(45deg);
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+        
+        .pricing-badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-right: 8px;
+        }
+        
+        .pricing-feature {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 12px;
+        }
+        
+        .pricing-feature::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            background: var(--primary-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: white;
         }
         
         /* Text Effects */
@@ -450,6 +525,7 @@
                 "nav": {
                     "home": "Home",
                     "services": "Services",
+                    "pricing": "Pricing",
                     "about": "About",
                     "contact": "Contact"
                 },
@@ -552,6 +628,93 @@
                         }
                     ]
                 },
+                "pricing": {
+                    "title": "📦 Digital Marketing Packages",
+                    "subtitle": "Premium solutions tailored to your business needs",
+                    "offers": [
+                        {
+                            "title": "Starter",
+                            "price": "25,000 DA",
+                            "subtitle": "Ideal for small businesses",
+                            "features": [
+                                "10 Video Creations",
+                                "16 Daily Content Posts",
+                                "Basic Digital Strategy",
+                                "Social Media Management"
+                            ],
+                            "details": [
+                                {"label": "Video Creation", "value": "10 per month"},
+                                {"label": "Content Creation", "value": "4 posts per week"},
+                                {"label": "Strategy Sessions", "value": "1 hour per week"},
+                                {"label": "Platforms", "value": "2 platforms"},
+                                {"label": "Analytics Reports", "value": "Monthly"}
+                            ],
+                            "color": "text-primary-blue"
+                        },
+                        {
+                            "title": "Growth",
+                            "price": "30,000 DA",
+                            "subtitle": "Perfect for growing businesses",
+                            "features": [
+                                "15 Video Creations",
+                                "20 Daily Content Posts",
+                                "Advanced Strategy",
+                                "Multi-platform Management"
+                            ],
+                            "details": [
+                                {"label": "Video Creation", "value": "15 per month"},
+                                {"label": "Content Creation", "value": "5 posts per week"},
+                                {"label": "Strategy Sessions", "value": "2 hours per week"},
+                                {"label": "Platforms", "value": "3 platforms"},
+                                {"label": "Analytics Reports", "value": "Bi-weekly"}
+                            ],
+                            "color": "text-primary-blue"
+                        },
+                        {
+                            "title": "Premium",
+                            "price": "45,000 DA",
+                            "subtitle": "For established businesses",
+                            "features": [
+                                "20 Video Creations",
+                                "30 Daily Content Posts",
+                                "Comprehensive Strategy",
+                                "Full Platform Management"
+                            ],
+                            "details": [
+                                {"label": "Video Creation", "value": "20 per month"},
+                                {"label": "Content Creation", "value": "7 posts per week"},
+                                {"label": "Strategy Sessions", "value": "4 hours per week"},
+                                {"label": "Platforms", "value": "4 platforms"},
+                                {"label": "Analytics Reports", "value": "Weekly"},
+                                {"label": "Dedicated Account Manager", "value": "Included"}
+                            ],
+                            "color": "text-primary-purple",
+                            "popular": true
+                        },
+                        {
+                            "title": "Enterprise",
+                            "price": "50,000 DA",
+                            "subtitle": "For large-scale businesses",
+                            "features": [
+                                "25 Video Creations",
+                                "40 Daily Content Posts",
+                                "Elite Strategy",
+                                "Full Platform Management"
+                            ],
+                            "details": [
+                                {"label": "Video Creation", "value": "25 per month"},
+                                {"label": "Content Creation", "value": "10 posts per week"},
+                                {"label": "Strategy Sessions", "value": "6 hours per week"},
+                                {"label": "Platforms", "value": "All platforms"},
+                                {"label": "Analytics Reports", "value": "Daily"},
+                                {"label": "Dedicated Account Manager", "value": "Included"},
+                                {"label": "Priority Support", "value": "24/7"}
+                            ],
+                            "color": "text-accent-yellow"
+                        }
+                    ],
+                    "note": "💡 Prices do not include advertising funding - Offers are customizable according to your needs."
+                },
                 "about": {
                     "title1": "About",
                     "title2": "Infinite Logic",
@@ -589,6 +752,7 @@
                 "nav": {
                     "home": "الرئيسية",
                     "services": "الخدمات",
+                    "pricing": "التسعير",
                     "about": "من نحن",
                     "contact": "اتصل بنا"
                 },
@@ -691,176 +855,92 @@
                         }
                     ]
                 },
-                "about": {
-                    "title1": "عن",
-                    "title2": "إنفينيت لوجيك",
-                    "description1": "نحن فريق من المبدعين الرقميين والمطورين والاستراتيجيين المتحمسين الذين يؤمنون بقوة التكنولوجيا في تحويل الأعمال وخلق روابط ذات معنى.",
-                    "description2": "تأسست في عام 2022، ساعدنا أكثر من 200 عميل في مختلف الصناعات على تحقيق أهدافهم الرقمية من خلال حلول مبتكرة وتقنيات متطورة.",
-                    "stats": [
+                "pricing": {
+                    "title": "📦 باقات التسويق الرقمي",
+                    "subtitle": "حلول متميزة مصممة خصيصًا لاحتياجات عملك",
+                    "offers": [
                         {
-                            "value": "200",
-                            "label": "مشروع"
+                            "title": "المبتدئ",
+                            "price": "25,000 دج",
+                            "subtitle": "مثالي للشركات الصغيرة",
+                            "features": [
+                                "10 إنشاءات فيديو",
+                                "16 منشور محتوى يومي",
+                                "استراتيجية رقمية أساسية",
+                                "إدارة وسائل التواصل الاجتماعي"
+                            ],
+                            "details": [
+                                {"label": "إنشاء الفيديو", "value": "10 شهريًا"},
+                                {"label": "إنشاء المحتوى", "value": "4 منشورات أسبوعيًا"},
+                                {"label": "جلسات الاستراتيجية", "value": "ساعة واحدة أسبوعيًا"},
+                                {"label": "المنصات", "value": "منصتان"},
+                                {"label": "تقارير التحليلات", "value": "شهريًا"}
+                            ],
+                            "color": "text-primary-blue"
                         },
                         {
-                            "value": "50",
-                            "label": "عميل"
+                            "title": "النمو",
+                            "price": "30,000 دج",
+                            "subtitle": "مثالي للشركات النامية",
+                            "features": [
+                                "15 إنشاءات فيديو",
+                                "20 منشور محتوى يومي",
+                                "استراتيجية متقدمة",
+                                "إدارة منصات متعددة"
+                            ],
+                            "details": [
+                                {"label": "إنشاء الفيديو", "value": "15 شهريًا"},
+                                {"label": "إنشاء المحتوى", "value": "5 منشورات أسبوعيًا"},
+                                {"label": "جلسات الاستراتيجية", "value": "ساعتان أسبوعيًا"},
+                                {"label": "المنصات", "value": "3 منصات"},
+                                {"label": "تقارير التحليلات", "value": "نصف شهري"}
+                            ],
+                            "color": "text-primary-blue"
                         },
                         {
-                            "value": "3",
-                            "label": "سنوات"
+                            "title": "المتميز",
+                            "price": "45,000 دج",
+                            "subtitle": "للشركات الراسخة",
+                            "features": [
+                                "20 إنشاءات فيديو",
+                                "30 منشور محتوى يومي",
+                                "استراتيجية شاملة",
+                                "إدارة كاملة للمنصات"
+                            ],
+                            "details": [
+                                {"label": "إنشاء الفيديو", "value": "20 شهريًا"},
+                                {"label": "إنشاء المحتوى", "value": "7 منشورات أسبوعيًا"},
+                                {"label": "جلسات الاستراتيجية", "value": "4 ساعات أسبوعيًا"},
+                                {"label": "المنصات", "value": "4 منصات"},
+                                {"label": "تقارير التحليلات", "value": "أسبوعيًا"},
+                                {"label": "مدير حساب مخصص", "value": "مضمن"}
+                            ],
+                            "color": "text-primary-purple",
+                            "popular": true
+                        },
+                        {
+                            "title": "المؤسسة",
+                            "price": "50,000 دج",
+                            "subtitle": "للشركات الكبيرة",
+                            "features": [
+                                "25 إنشاءات فيديو",
+                                "40 منشور محتوى يومي",
+                                "استراتيجية متطورة",
+                                "إدارة كاملة للمنصات"
+                            ],
+                            "details": [
+                                {"label": "إنشاء الفيديو", "value": "25 شهريًا"},
+                                {"label": "إنشاء المحتوى", "value": "10 منشورات أسبوعيًا"},
+                                {"label": "جلسات الاستراتيجية", "value": "6 ساعات أسبوعيًا"},
+                                {"label": "المنصات", "value": "جميع المنصات"},
+                                {"label": "تقارير التحليلات", "value": "يوميًا"},
+                                {"label": "مدير حساب مخصص", "value": "مضمن"},
+                                {"label": "دعم مميز", "value": "24/7"}
+                            ],
+                            "color": "text-accent-yellow"
                         }
                     ],
-                    "innovation": "ابتكار بلا حدود",
-                    "innovationText": "نتخطى الحدود لتقديم نتائج استثنائية لعملائنا."
-                },
-                "footer": {
-                    "brandText": "تحويل الأفكار إلى واقع رقمي من خلال حلول مبتكرة وتقنيات متطورة.",
-                    "servicesTitle": "الخدمات",
-                    "contactTitle": "اتصل بنا",
-                    "copyright": "© 2025 إنفينيت لوجيك. جميع الحقوق محفوظة."
-                },
-                "modal": {
-                    "whatWeDo": "ما نقدمه:",
-                    "requestService": "طلب هذه الخدمة"
-                }
-            },
-            "fr": {
-                "nav": {
-                    "home": "Accueil",
-                    "services": "Services",
-                    "about": "À propos",
-                    "contact": "Contact"
-                },
-                "hero": {
-                    "title1": "Infinite",
-                    "title2": "Possibilités",
-                    "title3": "Solutions",
-                    "title4": "Logiques",
-                    "subtitle": "Nous créons des expériences numériques qui repoussent les limites et livrent des résultats. Votre vision, notre expertise.",
-                    "cta1": "Démarrer votre projet",
-                    "cta2": "Voir nos réalisations"
-                },
-                "services": {
-                    "title": "Nos Services",
-                    "subtitle": "Nous fournissons des solutions numériques complètes pour élever votre marque",
-                    "items": [
-                        {
-                            "title": "Développement Web",
-                            "shortDesc": "Sites web et applications web personnalisés construits avec des technologies de pointe.",
-                            "longDesc": "Notre service de développement web se concentre sur la création de sites web et d'applications web hautes performances et évolutives adaptées aux besoins de votre entreprise. Nous utilisons des frameworks et des technologies modernes pour garantir que votre présence numérique se démarque.",
-                            "features": [
-                                "Conception et développement de sites web personnalisés",
-                                "Solutions de commerce électronique",
-                                "Développement d'applications web",
-                                "Intégration d'API",
-                                "Optimisation des performances",
-                                "Maintenance et support continus"
-                            ],
-                            "iconPath": "M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
-                        },
-                        {
-                            "title": "Conception UI/UX",
-                            "shortDesc": "Interfaces utilisateur intuitives et belles pour des expériences exceptionnelles.",
-                            "longDesc": "Notre service de conception UI/UX crée des interfaces visuellement époustouflantes et hautement fonctionnelles qui engagent les utilisateurs et stimulent les conversions. Nous nous concentrons sur les principes de conception centrés sur l'utilisateur pour offrir des expériences transparentes sur tous les appareils.",
-                            "features": [
-                                "Recherche et analyse des utilisateurs",
-                                "Maquettes et prototypes",
-                                "Design visuel et branding",
-                                "Design d'interaction",
-                                "Tests d'utilisabilité",
-                                "Systèmes de design"
-                            ],
-                            "iconPath": "M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z"
-                        },
-                        {
-                            "title": "Marketing Digital",
-                            "shortDesc": "Campagnes stratégiques qui stimulent l'engagement et fournissent des résultats.",
-                            "longDesc": "Notre service de marketing digital développe des stratégies basées sur les données pour augmenter votre visibilité en ligne, attirer des leads qualifiés et développer votre entreprise. Nous combinons créativité et analytique pour maximiser votre ROI.",
-                            "features": [
-                                "Optimisation SEO",
-                                "Marketing sur les réseaux sociaux",
-                                "Marketing de contenu",
-                                "Publicité PPC",
-                                "Marketing par e-mail",
-                                "Analytique et reporting"
-                            ],
-                            "iconPath": "M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
-                        },
-                        {
-                            "title": "Applications Mobiles",
-                            "shortDesc": "Applications natives et multiplateformes qui engagent les utilisateurs.",
-                            "longDesc": "Notre service de développement d'applications mobiles crée des applications puissantes et conviviales pour les plateformes iOS et Android. Nous nous concentrons sur les performances, la sécurité et la conception intuitive pour fournir des applications que les utilisateurs adorent.",
-                            "features": [
-                                "Développement d'applications iOS",
-                                "Développement d'applications Android",
-                                "Solutions multiplateformes",
-                                "Conception UI/UX d'applications",
-                                "Intégration d'API",
-                                "Optimisation de l'App Store"
-                            ],
-                            "iconPath": "M12 18h.01M8 21h8a1 1 0 001-1V4a1 1 0 00-1-1H8a1 1 0 00-1 1v16a1 1 0 001 1z"
-                        },
-                        {
-                            "title": "Identité de Marque",
-                            "shortDesc": "Solutions complètes qui distinguent votre entreprise.",
-                            "longDesc": "Notre service d'identité de marque vous aide à établir une présence de marque forte et cohérente sur tous les points de contact numériques et physiques. Nous créons des identités visuelles mémorables qui résonnent avec votre public cible.",
-                            "features": [
-                                "Conception de logo",
-                                "Lignes directrices de la marque",
-                                "Systèmes d'identité visuelle",
-                                "Stratégie de marque",
-                                "Systèmes de typographie",
-                                "Palettes de couleurs"
-                            ],
-                            "iconPath": "M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
-                        },
-                        {
-                            "title": "Solutions Cloud",
-                            "shortDesc": "Infrastructure évolutive qui croît avec votre entreprise.",
-                            "longDesc": "Notre service de solutions cloud fournit une infrastructure sécurisée, fiable et évolutive pour soutenir vos opérations numériques. Nous vous aidons à migrer, optimiser et gérer votre environnement cloud pour une efficacité maximale.",
-                            "features": [
-                                "Migration cloud",
-                                "Architecture serverless",
-                                "Solutions DevOps",
-                                "Sécurité cloud",
-                                "Optimisation des coûts",
-                                "Surveillance 24/7"
-                            ],
-                            "iconPath": "M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"
-                        }
-                    ]
-                },
-                "about": {
-                    "title1": "À propos de",
-                    "title2": "Infinite Logic",
-                    "description1": "Nous sommes une équipe de créateurs numériques, développeurs et stratèges passionnés qui croient au pouvoir de la technologie pour transformer les entreprises et créer des connexions significatives.",
-                    "description2": "Fondée en 2022, nous avons aidé plus de 200 clients dans diverses industries à atteindre leurs objectifs numériques grâce à des solutions innovantes et une technologie de pointe.",
-                    "stats": [
-                        {
-                            "value": "200",
-                            "label": "Projets"
-                        },
-                        {
-                            "value": "50",
-                            "label": "Clients"
-                        },
-                        {
-                            "value": "3",
-                            "label": "Ans"
-                        }
-                    ],
-                    "innovation": "Innovation Sans Limites",
-                    "innovationText": "Nous repoussons les limites pour offrir des résultats exceptionnels à nos clients."
-                },
-                "footer": {
-                    "brandText": "Transformer les idées en réalité numérique avec des solutions innovantes et une technologie de pointe.",
-                    "servicesTitle": "Services",
-                    "contactTitle": "Contact",
-                    "copyright": "© 2025 Infinite Logic. Tous droits réservés."
-                },
-                "modal": {
-                    "whatWeDo": "Ce que nous faisons:",
-                    "requestService": "Demander ce service"
+                    "note": "💡 الأسعار لا تشمل تمويل الإعلانات - العروض قابلة للتخصيص حسب احتياجاتك."
                 }
             }
         }
@@ -876,6 +956,7 @@
                     <div class="hidden md:flex space-x-8">
                         <a href="#home" class="nav-link text-lg font-medium nav-home">Home</a>
                         <a href="#services" class="nav-link text-lg font-medium nav-services">Services</a>
+                        <a href="#pricing" class="nav-link text-lg font-medium nav-pricing">Pricing</a>
                         <a href="#about" class="nav-link text-lg font-medium nav-about">About</a>
                         <a href="#contact" class="nav-link text-lg font-medium nav-contact">Contact</a>
                     </div>
@@ -891,13 +972,8 @@
                                 <span>English</span>
                             </div>
                             <div class="lang-option" data-lang="ar">
-                                <span class="w-6 text-center">
-🇩🇿</span>
+                                <span class="w-6 text-center">🇩🇿</span>
                                 <span>العربية</span>
-                            </div>
-                            <div class="lang-option" data-lang="fr">
-                                <span class="w-6 text-center">🇫🇷</span>
-                                <span>Français</span>
                             </div>
                         </div>
                     </div>
@@ -961,6 +1037,32 @@
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 services-container">
                 <!-- Services will be loaded dynamically -->
             </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-24 px-4 relative overflow-hidden bg-gradient-to-br from-dark-bg/90 to-dark-card/90">
+        <!-- Floating background elements -->
+        <div class="floating-element top-1/3 left-10 w-24 h-24 bg-primary-blue/10 animate-float" style="animation-delay: 1s"></div>
+        <div class="floating-element bottom-1/3 right-20 w-20 h-20 bg-primary-purple/10 animate-float" style="animation-delay: 3s"></div>
+        
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 pricing-title" data-aos="fade">
+                    📦 Digital Marketing Packages
+                </h2>
+                <p class="text-xl text-gray-300 max-w-2xl mx-auto pricing-subtitle" data-aos="fade" data-aos-delay="100">
+                    Premium solutions tailored to your business needs
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 pricing-container">
+                <!-- Pricing cards will be loaded dynamically -->
+            </div>
+            
+            <p class="text-center text-gray-400 mt-12 text-sm pricing-note" data-aos="fade" data-aos-delay="300">
+                💡 Prices do not include advertising funding - Offers are customizable according to your needs.
+            </p>
         </div>
     </section>
 
@@ -1125,6 +1227,7 @@
             // Update navigation
             document.querySelector('.nav-home').textContent = translations.nav.home;
             document.querySelector('.nav-services').textContent = translations.nav.services;
+            document.querySelector('.nav-pricing').textContent = translations.nav.pricing;
             document.querySelector('.nav-about').textContent = translations.nav.about;
             document.querySelector('.nav-contact').textContent = translations.nav.contact;
             
@@ -1157,11 +1260,53 @@
                         <h3 class="text-2xl font-bold mb-4 text-center">${service.title}</h3>
                         <p class="text-gray-300 text-center mb-4">${service.shortDesc}</p>
                         <div class="text-center mt-6 opacity-0 group-hover:opacity-100 transition-opacity">
-                            <span class="text-primary-blue font-medium">${lang === 'ar' ? 'انقر للتفاصيل ←' : lang === 'fr' ? 'Cliquez pour plus de détails →' : 'Click for details →'}</span>
+                            <span class="text-primary-blue font-medium">${lang === 'ar' ? 'انقر للتفاصيل ←' : 'Click for details →'}</span>
                         </div>
                     </div>
                 `;
                 servicesContainer.innerHTML += serviceCard;
+            });
+            
+            // Update pricing section
+            document.querySelector('.pricing-title').textContent = translations.pricing.title;
+            document.querySelector('.pricing-subtitle').textContent = translations.pricing.subtitle;
+            document.querySelector('.pricing-note').textContent = translations.pricing.note;
+            
+            const pricingContainer = document.querySelector('.pricing-container');
+            pricingContainer.innerHTML = '';
+            
+            translations.pricing.offers.forEach((offer, index) => {
+                const offerCard = `
+                    <div class="bg-dark-card rounded-2xl shadow-lg p-6 pricing-card relative"
+                         data-aos="zoom" data-aos-delay="${index * 100}">
+                        ${offer.popular ? '<div class="pricing-highlight">Most Popular</div>' : ''}
+                        <div class="flex items-start justify-between mb-4">
+                            <h3 class="text-xl font-bold ${offer.color}">${offer.title}</h3>
+                            <div class="text-2xl font-bold">${offer.price}</div>
+                        </div>
+                        <p class="text-sm text-gray-400 mb-6">${offer.subtitle}</p>
+                        <ul class="mb-6">
+                            ${offer.features.map(feature => `
+                                <li class="pricing-feature">${feature}</li>
+                            `).join('')}
+                        </ul>
+                        <div class="bg-dark-bg/50 p-4 rounded-lg mb-6">
+                            <h4 class="text-md font-semibold mb-3">Package Details:</h4>
+                            <ul class="space-y-2 text-gray-300">
+                                ${offer.details.map(detail => `
+                                    <li class="flex justify-between">
+                                        <span>${detail.label}</span>
+                                        <span class="font-medium">${detail.value}</span>
+                                    </li>
+                                `).join('')}
+                            </ul>
+                        </div>
+                        <button class="w-full bg-gradient-to-r from-primary-blue to-primary-purple text-white py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity">
+                            Get Started
+                        </button>
+                    </div>
+                `;
+                pricingContainer.innerHTML += offerCard;
             });
             
             // Update about section
