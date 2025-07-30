@@ -18,7 +18,11 @@
                         'dark-card': '#1E293B',
                         'accent-teal': '#00F0FF',
                         'accent-pink': '#FF00F5',
-                        'accent-yellow': '#FBBF24'
+                        'accent-yellow': '#FBBF24',
+                        'google-blue': '#4285F4',
+                        'google-red': '#EA4335',
+                        'google-yellow': '#FBBC05',
+                        'google-green': '#34A853'
                     },
                     animation: {
                         'float': 'float 6s ease-in-out infinite',
@@ -27,7 +31,9 @@
                         'hue-rotate': 'hue-rotate 8s linear infinite',
                         'spin-slow': 'spin 20s linear infinite',
                         'wave': 'wave 8s ease-in-out infinite alternate',
-                        'neon-pulse': 'neon-pulse 4s ease-in-out infinite alternate'
+                        'neon-pulse': 'neon-pulse 4s ease-in-out infinite alternate',
+                        'bounce-slow': 'bounce 3s infinite',
+                        'tilt': 'tilt 10s ease-in-out infinite alternate'
                     },
                     keyframes: {
                         float: {
@@ -52,6 +58,10 @@
                         'neon-pulse': {
                             '0%': { 'box-shadow': '0 0 5px rgba(59, 130, 246, 0.5), 0 0 20px rgba(139, 92, 246, 0.3)' },
                             '100%': { 'box-shadow': '0 0 20px rgba(59, 130, 246, 0.8), 0 0 40px rgba(139, 92, 246, 0.5)' }
+                        },
+                        tilt: {
+                            '0%, 100%': { transform: 'rotate(-1deg)' },
+                            '50%': { transform: 'rotate(1deg)' }
                         }
                     }
                 }
@@ -69,6 +79,10 @@
             --accent-teal: #00F0FF;
             --accent-pink: #FF00F5;
             --accent-yellow: #FBBF24;
+            --google-blue: #4285F4;
+            --google-red: #EA4335;
+            --google-yellow: #FBBC05;
+            --google-green: #34A853;
         }
         
         body {
@@ -79,6 +93,43 @@
             color: white;
             line-height: 1.7;
         }
+        
+        /* Google Partner Badge */
+        .google-partner-badge {
+            position: relative;
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 8px 15px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .google-partner-badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(66, 133, 244, 0.3);
+        }
+        
+        .google-colors {
+            position: relative;
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+        }
+        
+        .google-colors span {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-radius: 2px;
+        }
+        
+        .google-blue { background: var(--google-blue); top: 0; left: 0; }
+        .google-red { background: var(--google-red); top: 0; right: 0; }
+        .google-yellow { background: var(--google-yellow); bottom: 0; left: 0; }
+        .google-green { background: var(--google-green); bottom: 0; right: 0; }
         
         /* Language Switcher */
         .lang-switcher {
@@ -471,6 +522,30 @@
             animation: neon-pulse 2s ease-in-out infinite alternate;
         }
         
+        /* Google Partner Section */
+        .google-partner-section {
+            background: linear-gradient(135deg, rgba(66, 133, 244, 0.1), rgba(234, 67, 53, 0.1));
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .google-logo {
+            position: relative;
+            width: 80px;
+            height: 80px;
+        }
+        
+        .google-logo span {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border-radius: 2px;
+        }
+        
+        .google-logo .g-blue { background: var(--google-blue); top: 0; left: 0; }
+        .google-logo .g-red { background: var(--google-red); top: 0; right: 0; }
+        .google-logo .g-yellow { background: var(--google-yellow); bottom: 0; left: 0; }
+        .google-logo .g-green { background: var(--google-green); bottom: 0; right: 0; }
+        
         /* Responsive */
         @media (max-width: 768px) {
             #home h1 {
@@ -484,6 +559,11 @@
             .lang-dropdown {
                 left: 0;
                 right: auto;
+            }
+            
+            .google-partner-section {
+                flex-direction: column;
+                text-align: center;
             }
         }
         
@@ -514,6 +594,40 @@
         .neon-text {
             text-shadow: 0 0 5px rgba(59, 130, 246, 0.5), 0 0 15px rgba(139, 92, 246, 0.3);
             animation: neon-pulse 4s ease-in-out infinite alternate;
+        }
+        
+        /* Tilt Animation */
+        .tilt-animate {
+            animation: tilt 10s ease-in-out infinite;
+        }
+        
+        /* Google Ads Animation */
+        .google-ads-animation {
+            position: relative;
+            width: 100%;
+            height: 100px;
+            overflow: hidden;
+        }
+        
+        .google-ad {
+            position: absolute;
+            background: white;
+            border-radius: 4px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: all 0.5s ease;
+        }
+        
+        .google-ad::before {
+            content: 'Ad';
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            background: var(--google-blue);
+            color: white;
+            font-size: 10px;
+            padding: 2px 4px;
+            border-radius: 2px;
         }
     </style>
 </head>
@@ -737,6 +851,17 @@
                     "innovation": "Innovation Without Limits",
                     "innovationText": "We push boundaries to deliver exceptional results for our clients."
                 },
+                "googlePartner": {
+                    "title": "Google Partner",
+                    "description": "As an official Google Partner, we have access to exclusive resources, training, and support to deliver the best results for your Google Ads campaigns.",
+                    "benefits": [
+                        "Certified Google Ads professionals",
+                        "Access to beta features",
+                        "Dedicated Google support",
+                        "Performance optimization",
+                        "Regular strategy updates"
+                    ]
+                },
                 "footer": {
                     "brandText": "Transforming ideas into digital reality with innovative solutions and cutting-edge technology.",
                     "servicesTitle": "Services",
@@ -941,6 +1066,17 @@
                         }
                     ],
                     "note": "💡 الأسعار لا تشمل تمويل الإعلانات - العروض قابلة للتخصيص حسب احتياجاتك."
+                },
+                "googlePartner": {
+                    "title": "شريك جوجل",
+                    "description": "كشريك رسمي من جوجل، لدينا إمكانية الوصول إلى موارد حصرية وتدريب ودعم لتقديم أفضل النتائج لحملات جوجل أدز الخاصة بك.",
+                    "benefits": [
+                        "متخصصون معتمدون في جوجل أدز",
+                        "الوصول إلى الميزات التجريبية",
+                        "دعم مخصص من جوجل",
+                        "تحسين الأداء",
+                        "تحديثات استراتيجية منتظمة"
+                    ]
                 }
             }
         }
@@ -961,19 +1097,31 @@
                         <a href="#contact" class="nav-link text-lg font-medium nav-contact">Contact</a>
                     </div>
                     
-                    <div class="lang-switcher">
-                        <div class="lang-btn">
-                            <span class="current-lang">EN</span>
-                            <i class="fas fa-chevron-down text-xs transition-transform"></i>
-                        </div>
-                        <div class="lang-dropdown">
-                            <div class="lang-option" data-lang="en">
-                                <span class="w-6 text-center">🇬🇧</span>
-                                <span>English</span>
+                    <div class="flex items-center gap-4">
+                        <div class="google-partner-badge hidden md:flex">
+                            <div class="google-colors">
+                                <span class="google-blue"></span>
+                                <span class="google-red"></span>
+                                <span class="google-yellow"></span>
+                                <span class="google-green"></span>
                             </div>
-                            <div class="lang-option" data-lang="ar">
-                                <span class="w-6 text-center">🇩🇿</span>
-                                <span>العربية</span>
+                            <span>Google Partner</span>
+                        </div>
+                        
+                        <div class="lang-switcher">
+                            <div class="lang-btn">
+                                <span class="current-lang">EN</span>
+                                <i class="fas fa-chevron-down text-xs transition-transform"></i>
+                            </div>
+                            <div class="lang-dropdown">
+                                <div class="lang-option" data-lang="en">
+                                    <span class="w-6 text-center">🇬🇧</span>
+                                    <span>English</span>
+                                </div>
+                                <div class="lang-option" data-lang="ar">
+                                    <span class="w-6 text-center">🇩🇿</span>
+                                    <span>العربية</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1036,6 +1184,46 @@
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 services-container">
                 <!-- Services will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Google Partner Section -->
+    <section class="py-16 px-4">
+        <div class="max-w-7xl mx-auto google-partner-section rounded-2xl p-8 md:p-12 flex flex-col md:flex-row items-center gap-8">
+            <div class="flex-shrink-0">
+                <div class="google-logo animate-bounce-slow">
+                    <span class="g-blue"></span>
+                    <span class="g-red"></span>
+                    <span class="g-yellow"></span>
+                    <span class="g-green"></span>
+                </div>
+            </div>
+            <div>
+                <h3 class="text-2xl md:text-3xl font-bold mb-4 google-partner-title">Google Partner</h3>
+                <p class="text-gray-300 mb-6 google-partner-desc">
+                    As an official Google Partner, we have access to exclusive resources, training, and support to deliver the best results for your Google Ads campaigns.
+                </p>
+                <ul class="space-y-3 google-partner-benefits">
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 text-green-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span>Certified Google Ads professionals</span>
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 text-green-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span>Access to beta features</span>
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 text-green-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span>Dedicated Google support</span>
+                    </li>
+                </ul>
             </div>
         </div>
     </section>
@@ -1120,6 +1308,15 @@
                         Transforming ideas into digital reality with innovative solutions and cutting-edge technology.
                     </p>
                     
+                    <div class="google-partner-badge mt-6 inline-flex">
+                        <div class="google-colors">
+                            <span class="google-blue"></span>
+                            <span class="google-red"></span>
+                            <span class="google-yellow"></span>
+                            <span class="google-green"></span>
+                        </div>
+                        <span>Google Partner</span>
+                    </div>
                 </div>
                 <div>
                     <h3 class="text-2xl font-bold mb-6 footer-services-title">Services</h3>
@@ -1266,6 +1463,27 @@
                 `;
                 servicesContainer.innerHTML += serviceCard;
             });
+            
+            // Update Google Partner section
+            if (translations.googlePartner) {
+                document.querySelector('.google-partner-title').textContent = translations.googlePartner.title;
+                document.querySelector('.google-partner-desc').textContent = translations.googlePartner.description;
+                
+                const benefitsContainer = document.querySelector('.google-partner-benefits');
+                benefitsContainer.innerHTML = '';
+                
+                translations.googlePartner.benefits.forEach(benefit => {
+                    const benefitItem = `
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>${benefit}</span>
+                        </li>
+                    `;
+                    benefitsContainer.innerHTML += benefitItem;
+                });
+            }
             
             // Update pricing section
             document.querySelector('.pricing-title').textContent = translations.pricing.title;
